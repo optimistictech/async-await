@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Downloader</title>
+  </head>
+  <body>
+    <button onclick="downloadVideo(myCustomCallback)">Download Video</button>
+
+    <script type="text/javascript">
+      function downloadVideo(callback) {
+        let customVideoUrl = "https://www.videezy.com/download/168?download_auth_hash=ed229592&pro=false";
+
+        let customLink = document.createElement("a");
+        customLink.href = customVideoUrl;
+        customLink.download = "downloaded-video.mp4";
+        document.body.appendChild(customLink);
+        customLink.click();
+        document.body.removeChild(customLink);
+
+        if (typeof callback === "function") {
+          callback();
+        }
+      }
+
+      function myCustomCallback() {
+        alert("Custom video downloaded successfully!");
+      }
+    </script>
+  </body>
+</html>
